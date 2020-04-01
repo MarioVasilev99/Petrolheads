@@ -2,10 +2,11 @@
 {
     using System.Diagnostics;
 
+    using Microsoft.AspNetCore.Authorization;
+    using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Web.ViewModels;
 
-    using Microsoft.AspNetCore.Mvc;
-
+    [Authorize]
     public class HomeController : BaseController
     {
         public IActionResult Index()

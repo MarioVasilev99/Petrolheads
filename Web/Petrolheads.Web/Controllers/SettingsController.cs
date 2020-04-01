@@ -3,12 +3,11 @@
     using System;
     using System.Threading.Tasks;
 
+    using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Data;
     using Petrolheads.Web.ViewModels.Settings;
-
-    using Microsoft.AspNetCore.Mvc;
 
     public class SettingsController : BaseController
     {

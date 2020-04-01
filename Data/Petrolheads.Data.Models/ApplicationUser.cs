@@ -3,10 +3,10 @@ namespace Petrolheads.Data.Models
 {
     using System;
     using System.Collections.Generic;
-
-    using Petrolheads.Data.Common.Models;
+    using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Identity;
+    using Petrolheads.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -16,7 +16,16 @@ namespace Petrolheads.Data.Models
             this.Roles = new HashSet<IdentityUserRole<string>>();
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
+            this.Cars = new HashSet<Car>();
         }
+
+        [Required]
+        [MaxLength(20)]
+        public string Username { get; set; }
+
+        public string CoverPhotoUrl { get; set; }
+
+        public string ProfilePhotoUrl { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }
@@ -27,6 +36,8 @@ namespace Petrolheads.Data.Models
         public bool IsDeleted { get; set; }
 
         public DateTime? DeletedOn { get; set; }
+
+        public virtual IEnumerable<Car> Cars { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
