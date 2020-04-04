@@ -19,10 +19,6 @@ namespace Petrolheads.Data.Models
             this.Cars = new HashSet<Car>();
         }
 
-        [Required]
-        [MaxLength(20)]
-        public string Username { get; set; }
-
         public string CoverPhotoUrl { get; set; }
 
         public string ProfilePhotoUrl { get; set; }

@@ -26,6 +26,12 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<Car> Cars { get; set; }
+
+        public DbSet<CarPhoto> CarPhotos { get; set; }
+
+        public DbSet<Make> Makes { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
