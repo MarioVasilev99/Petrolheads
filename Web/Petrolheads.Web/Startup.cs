@@ -1,7 +1,14 @@
 ﻿namespace Petrolheads.Web
 {
     using System.Reflection;
-
+    using CloudinaryDotNet;
+    using Microsoft.AspNetCore.Builder;
+    using Microsoft.AspNetCore.Hosting;
+    using Microsoft.AspNetCore.Http;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Hosting;
     using Petrolheads.Data;
     using Petrolheads.Data.Common;
     using Petrolheads.Data.Common.Repositories;
@@ -12,14 +19,6 @@
     using Petrolheads.Services.Mapping;
     using Petrolheads.Services.Messaging;
     using Petrolheads.Web.ViewModels;
-
-    using Microsoft.AspNetCore.Builder;
-    using Microsoft.AspNetCore.Hosting;
-    using Microsoft.AspNetCore.Http;
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Hosting;
 
     public class Startup
     {
@@ -49,6 +48,13 @@
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddRazorPages();
 
+            Account account = new Account(
+                this.configuration["Cloudinary:CloudName"],
+                this.configuration["Cloudinary:ApiKey"],
+                this.configuration["Cloudinary:ApiSecret"]);
+
+            Cloudinary cloudinary = new Cloudinary(account);
+
             services.AddSingleton(this.configuration);
 
             // Data repositories
@@ -59,6 +65,7 @@
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddSingleton(cloudinary);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
