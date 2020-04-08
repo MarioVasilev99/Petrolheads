@@ -19,6 +19,7 @@
     </environment>
 
     <link href="~/css/post-styles.css" rel="stylesheet" asp-append-version="true" />
+    <link href="~/css/profile-page.css" rel="stylesheet" asp-append-version="true" />
 </head>
 <body>
     <header>
@@ -44,7 +45,7 @@
         </nav>
     </header>
 
-    <div class="container">
+    <div class="container flex-fill">
         <partial name="_CookieConsentPartial" />
         <main role="main" class="pb-3">
             @this.RenderBody()

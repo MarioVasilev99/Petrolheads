@@ -1,0 +1,28 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="http://lorempixel.com/850/280/nightlife/5/" alt="Profile image example" />
+        <img align="left" class="fb-image-profile thumbnail" src="http://lorempixel.com/180/180/people/9/" alt="Profile image example" />
+        <div class="fb-profile-text">
+            <h1>Eli Macy</h1>
+            <p>Girls just wanna go fun.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <a asp-controller="DifferentControllerName" asp-action="Create">
+            <input type="button" class="btn btn-primary nav-link" value="Cars" />
+        </a>
+        <a asp-controller="DifferentControllerName" asp-action="Create">
+            <input type="button" class="btn btn-primary" value="Posts" />
+        </a>
+        <a asp-controller="DifferentControllerName" asp-action="Create">
+            <input type="button" class="btn btn-primary" value="Create" />
+        </a>
+    </div>
+</div>
+
+
