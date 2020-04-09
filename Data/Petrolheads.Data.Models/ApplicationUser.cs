@@ -3,7 +3,6 @@ namespace Petrolheads.Data.Models
 {
     using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations;
 
     using Microsoft.AspNetCore.Identity;
     using Petrolheads.Data.Common.Models;
