@@ -12,6 +12,8 @@
             this.Photos = new HashSet<CarPhoto>();
         }
 
+        public string MainImageUrl { get; set; }
+
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
