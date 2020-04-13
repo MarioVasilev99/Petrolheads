@@ -1,8 +1,8 @@
-﻿namespace Petrolheads.Web.ViewModels
+﻿namespace Petrolheads.Web.ViewModels.Profiles
 {
     using System;
 
-    public class UserProfileCarViewModel
+    public class CarViewModel
     {
         public string MainImageUrl { get; set; }
 

@@ -1,4 +1,4 @@
-﻿namespace Petrolheads.Web.ViewModels.Profile
+﻿namespace Petrolheads.Web.ViewModels.Profiles
 {
     using System.Collections.Generic;
 
@@ -10,6 +10,6 @@
 
         public string UserName { get; set; }
 
-        public IEnumerable<UserProfileCarViewModel> Cars { get; set; }
+        public IEnumerable<CarViewModel> Cars { get; set; }
     }
 }
