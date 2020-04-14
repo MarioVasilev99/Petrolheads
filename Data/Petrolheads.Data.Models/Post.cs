@@ -8,7 +8,7 @@
     {
         public Post()
         {
-            this.Images = new HashSet<string>();
+            this.Images = new HashSet<PostImage>();
         }
 
         public string UserId { get; set; }
@@ -17,6 +17,6 @@
 
         public string Description { get; set; }
 
-        public IEnumerable<string> Images { get; set; }
+        public IEnumerable<PostImage> Images { get; set; }
     }
 }

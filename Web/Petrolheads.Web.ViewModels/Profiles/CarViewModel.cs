@@ -2,7 +2,10 @@
 {
     using System;
 
-    public class CarViewModel
+    using Petrolheads.Data.Models;
+    using Petrolheads.Services.Mapping;
+
+    public class CarViewModel : IMapFrom<Car>
     {
         public string MainImageUrl { get; set; }
 

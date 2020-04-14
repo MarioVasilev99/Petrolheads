@@ -1,6 +1,7 @@
 ﻿namespace Petrolheads.Web
 {
     using System.Reflection;
+
     using CloudinaryDotNet;
     using Microsoft.AspNetCore.Builder;
     using Microsoft.AspNetCore.Hosting;
@@ -16,6 +17,7 @@
     using Petrolheads.Data.Models;
     using Petrolheads.Data.Repositories;
     using Petrolheads.Data.Seeding;
+    using Petrolheads.Services;
     using Petrolheads.Services.Data;
     using Petrolheads.Services.Mapping;
     using Petrolheads.Services.Messaging;
@@ -69,6 +71,8 @@
             // Application services
             services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
             services.AddTransient<ISettingsService, SettingsService>();
+            services.AddTransient<IProfilesService, ProfilesService>();
+            services.AddTransient<IPostsService, PostsService>();
             services.AddSingleton(cloudinary);
         }
 

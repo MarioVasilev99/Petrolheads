@@ -21,6 +21,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\Data\Petrolheads.Data.Common\Petrolheads.Data.Common.csproj" />
     <ProjectReference Include="..\..\Data\Petrolheads.Data.Models\Petrolheads.Data.Models.csproj" />
+    <ProjectReference Include="..\..\Web\Petrolheads.Web.ViewModels\Petrolheads.Web.ViewModels.csproj" />
     <ProjectReference Include="..\Petrolheads.Services.Mapping\Petrolheads.Services.Mapping.csproj" />
   </ItemGroup>
 

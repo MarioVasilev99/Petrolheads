@@ -8,14 +8,14 @@
         <img align="left" class="fb-image-lg" src="https://images.unsplash.com/photo-1526726538690-5cbf956ae2fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1950&h=800&q=80" alt="Profile image example" />
         <img align="left" class="fb-image-profile thumbnail" src="https://images.unsplash.com/photo-1531955895395-7746706426e6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=334&h=300&q=80" alt="Profile image example" />
         <div class="fb-profile-text">
-            <h1>Eli Macy</h1>
+            <h1>@Model.UserName</h1>
             <p>Girls just wanna go fun.</p>
         </div>
     </div>
 
     <div class="container">
         <nav class="nav nav-pills nav-fill mb-3">
-            <a class="nav-item nav-link active mx-1" asp-controller="Car" asp-action="All">Cars</a>
+            <a class="nav-item nav-link active mx-1" asp-controller="Profiles" asp-action="Cars">Cars</a>
             <a class="nav-item nav-link mx-1" asp-controller="Post" asp-action="All">Posts</a>
             <a class="nav-item nav-link mx-1" asp-controller="Follower" asp-action="All">Followers</a>
         </nav>
@@ -23,15 +23,23 @@
 
     <div class="container-fluid d-flex flex-wrap">
         @* Button if collection empty *@
-        <button type="button" class="btn btn-dark btn-lg btn-block">Add Item Button</button>
-
-        <div class="d-flex flex-wrap border border-info m-1 w-100">
-            <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&h=200&q=80" alt="car-image" class="img-thumbnail">
-            <div class="d-inline-block align-self-end">
-                <h2 class="">BMW E60 M5</h2>
-                <p class="">Added on 25.03.2020</p>
-            </div>
-        </div>
+        @if (!Model.Cars.Any())
+        {
+            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Cars" asp-action="Create">Add Car</button>
+        }
+        else
+        {
+            @foreach (var car in Model.Cars)
+            {
+                <div class="d-flex flex-wrap border border-info m-1 w-100">
+                    <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&h=200&q=80" alt="car-image" class="img-thumbnail">
+                    <div class="d-inline-block align-self-end">
+                        <h2 class="">@car.Model</h2>
+                        <p class="">Added on @car.CreatedOn</p>
+                    </div>
+                </div>
+            }
+        }
     </div>
 </div>
 

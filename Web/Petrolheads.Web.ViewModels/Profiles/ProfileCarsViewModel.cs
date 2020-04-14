@@ -2,11 +2,14 @@
 {
     using System.Collections.Generic;
 
-    public class ProfileCarsViewModel
-    {
-        public string UserProfileImageUrl { get; set; }
+    using Petrolheads.Data.Models;
+    using Petrolheads.Services.Mapping;
 
-        public string UserCoverImageUrl { get; set; }
+    public class ProfileCarsViewModel : IMapFrom<ApplicationUser>
+    {
+        public string ProfilePhotoUrl { get; set; }
+
+        public string CoverPhotoUrl { get; set; }
 
         public string UserName { get; set; }
 

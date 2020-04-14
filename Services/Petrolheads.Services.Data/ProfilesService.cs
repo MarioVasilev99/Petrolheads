@@ -1,19 +1,29 @@
 ﻿namespace Petrolheads.Services
 {
+    using System.Linq;
+
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
-    using System.Collections.Generic;
+    using Petrolheads.Services.Mapping;
+    using Petrolheads.Web.ViewModels.Profiles;
 
     public class ProfilesService : IProfilesService
     {
-        public ProfilesService(IDeletableEntityRepository<Car> category)
-        {
+        private readonly IDeletableEntityRepository<ApplicationUser> users;
 
+        public ProfilesService(IDeletableEntityRepository<ApplicationUser> users)
+        {
+            this.users = users;
         }
 
-        public IEnumerable<T> GetAll<T>()
+        public ProfileCarsViewModel GetUserInfoWithCars(string userId)
         {
-            throw new System.NotImplementedException();
+            var profileCarsViewModel = this.users.All()
+                .Where(u => u.Id == userId)
+                .To<ProfileCarsViewModel>()
+                .FirstOrDefault();
+
+            return profileCarsViewModel;
         }
     }
 }

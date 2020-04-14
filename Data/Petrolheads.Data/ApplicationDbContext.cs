@@ -32,6 +32,10 @@
 
         public DbSet<Make> Makes { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
+        public DbSet<PostImage> PostsImages { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)

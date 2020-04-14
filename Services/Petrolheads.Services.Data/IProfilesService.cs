@@ -1,9 +1,9 @@
 ﻿namespace Petrolheads.Services
 {
-    using System.Collections.Generic;
+    using Petrolheads.Web.ViewModels.Profiles;
 
     public interface IProfilesService
     {
-        IEnumerable<T> GetAll<T>();
+        ProfileCarsViewModel GetUserInfoWithCars(string userId);
     }
 }
