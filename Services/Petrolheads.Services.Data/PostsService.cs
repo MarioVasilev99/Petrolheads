@@ -22,12 +22,15 @@
 
         public async Task<int> CreatePost(string userId, CreatePostInputModel input)
         {
-            var postImagesUrls = await CloudinaryExtension.UploadAsync(this.cloudinary, input.Images);
-
             var postImages = new List<PostImage>();
-            foreach (var url in postImagesUrls)
+
+            if (input.Images != null)
             {
-                postImages.Add(new PostImage() { ImageUrl = url });
+                var postImagesUrls = await CloudinaryExtension.UploadAsync(this.cloudinary, input.Images);
+                foreach (var url in postImagesUrls)
+                {
+                    postImages.Add(new PostImage() { ImageUrl = url });
+                }
             }
 
             var newPost = new Post()
