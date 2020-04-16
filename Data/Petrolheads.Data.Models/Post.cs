@@ -1,6 +1,7 @@
 ﻿namespace Petrolheads.Data.Models
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using Petrolheads.Data.Common.Models;
 
@@ -11,6 +12,7 @@
             this.Images = new HashSet<PostImage>();
         }
 
+        [Required]
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }

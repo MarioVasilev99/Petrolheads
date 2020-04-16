@@ -14,13 +14,15 @@
 
         public string MainImageUrl { get; set; }
 
+        [Required]
         public string UserId { get; set; }
 
         public virtual ApplicationUser User { get; set; }
 
+        [Required]
         public int MakeId { get; set; }
 
-        public Make Make { get; set; }
+        public virtual Make Make { get; set; }
 
         [Required]
         public string Model { get; set; }
