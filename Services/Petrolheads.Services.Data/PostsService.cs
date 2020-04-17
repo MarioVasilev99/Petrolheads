@@ -49,7 +49,7 @@
 
         public AllPostsViewModel GetAll(int? count = null)
         {
-            IQueryable<Post> posts = this.posts.All().OrderBy(p => p.CreatedOn);
+            IQueryable<Post> posts = this.posts.All().OrderByDescending(p => p.CreatedOn);
 
             if (count.HasValue)
             {
