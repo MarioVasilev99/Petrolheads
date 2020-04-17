@@ -4,14 +4,23 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
+    using Petrolheads.Services.Data;
     using Petrolheads.Web.ViewModels;
 
     [Authorize]
     public class HomeController : BaseController
     {
+        private readonly IPostsService postsService;
+
+        public HomeController(IPostsService postsService)
+        {
+            this.postsService = postsService;
+        }
+
         public IActionResult Index()
         {
-            return this.View();
+            var postsViewModel = this.postsService.GetAll(10);
+            return this.View(postsViewModel);
         }
 
         public IActionResult Privacy()

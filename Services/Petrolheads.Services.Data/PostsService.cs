@@ -1,12 +1,14 @@
 ﻿namespace Petrolheads.Services.Data
 {
     using System.Collections.Generic;
+    using System.Linq;
     using System.Threading.Tasks;
 
     using CloudinaryDotNet;
     using Petrolheads.Common.CloudinaryHelper;
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
+    using Petrolheads.Services.Mapping;
     using Petrolheads.Web.ViewModels.Posts;
 
     public class PostsService : IPostsService
@@ -43,6 +45,23 @@
             await this.posts.AddAsync(newPost);
             await this.posts.SaveChangesAsync();
             return newPost.Id;
+        }
+
+        public AllPostsViewModel GetAll(int? count = null)
+        {
+            IQueryable<Post> posts = this.posts.All().OrderBy(p => p.CreatedOn);
+
+            if (count.HasValue)
+            {
+                posts = posts.Take(count.Value);
+            }
+
+            var allPosts = posts.To<PostViewModel>().ToList();
+
+            return new AllPostsViewModel()
+            {
+                Posts = allPosts,
+            };
         }
     }
 }
