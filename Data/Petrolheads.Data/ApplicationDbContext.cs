@@ -6,11 +6,10 @@
     using System.Threading;
     using System.Threading.Tasks;
 
-    using Petrolheads.Data.Common.Models;
-    using Petrolheads.Data.Models;
-
     using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
     using Microsoft.EntityFrameworkCore;
+    using Petrolheads.Data.Common.Models;
+    using Petrolheads.Data.Models;
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser, ApplicationRole, string>
     {
@@ -35,6 +34,8 @@
         public DbSet<Post> Posts { get; set; }
 
         public DbSet<PostImage> PostsImages { get; set; }
+
+        public DbSet<Like> Likes { get; set; }
 
         public override int SaveChanges() => this.SaveChanges(true);
 

@@ -50,7 +50,7 @@
 
             services.AddControllersWithViews(configure =>
             {
-                configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                // configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
 
@@ -73,6 +73,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IProfilesService, ProfilesService>();
             services.AddTransient<IPostsService, PostsService>();
+            services.AddTransient<ILikesService, LikesService>();
             services.AddSingleton(cloudinary);
         }
 

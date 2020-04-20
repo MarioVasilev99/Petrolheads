@@ -33,10 +33,10 @@
                         }
                     </div>
                     <div class="card-footer">
-                        <a href="#" class="d-inline-block text-muted">
-                            <small><strong>0</strong> Likes</small>
+                        <a href="" class="d-inline-block text-muted" onclick="like(@post.Id); return false">
+                            <small><strong id="likesCount-@post.Id">@post.LikesCount</strong> Likes</small>
                         </a>
-                        <a href="#" class="d-inline-block text-muted ml-3">
+                        <a href="" class="d-inline-block text-muted ml-3">
                             <small><strong>0</strong> Comments</small>
                         </a>
                     </div>

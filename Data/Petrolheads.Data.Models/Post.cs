@@ -10,6 +10,7 @@
         public Post()
         {
             this.Images = new HashSet<PostImage>();
+            this.Likes = new HashSet<Like>();
         }
 
         [Required]
@@ -20,5 +21,7 @@
         public string Description { get; set; }
 
         public IEnumerable<PostImage> Images { get; set; }
+
+        public IEnumerable<Like> Likes { get; set; }
     }
 }
