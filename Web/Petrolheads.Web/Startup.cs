@@ -50,9 +50,14 @@
 
             services.AddControllersWithViews(configure =>
             {
-                // configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
+                configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddRazorRuntimeCompilation();
             services.AddRazorPages();
+
+            services.AddAntiforgery(options =>
+            {
+                options.HeaderName = "X-CSRF-TOKEN";
+            });
 
             Account account = new Account(
                 this.configuration["Cloudinary:CloudName"],
