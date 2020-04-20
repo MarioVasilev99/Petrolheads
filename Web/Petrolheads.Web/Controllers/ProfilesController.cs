@@ -18,9 +18,13 @@
         }
 
         [Authorize]
-        public IActionResult Cars()
+        public IActionResult Cars(string userId)
         {
-            var userId = this.userManager.GetUserId(this.User);
+            if (userId == null)
+            {
+                userId = this.userManager.GetUserId(this.User);
+            }
+
             var viewModel = this.profilesService.GetUserInfoWithCars(userId);
 
             return this.View(viewModel);
