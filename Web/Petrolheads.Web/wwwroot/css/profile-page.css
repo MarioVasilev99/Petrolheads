@@ -2,13 +2,20 @@
     z-index: 0;
     width: 100%;
     margin-bottom: 10px;
+    height: 25em;
 }
 
 .fb-image-profile {
     margin: -90px 10px 0px 50px;
+    border: 1px solid black;
     z-index: 9;
     width: 20%;
 }
+
+.fb-profile-text {
+    margin-bottom: 0.6em;
+}
+
 
 @media (max-width:992px) {
 

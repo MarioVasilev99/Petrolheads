@@ -20,6 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\Petrolheads.Common\Petrolheads.Common.csproj" />
     <ProjectReference Include="..\Petrolheads.Data.Common\Petrolheads.Data.Common.csproj" />
   </ItemGroup>
   

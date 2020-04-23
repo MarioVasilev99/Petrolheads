@@ -5,6 +5,7 @@ namespace Petrolheads.Data.Models
     using System.Collections.Generic;
 
     using Microsoft.AspNetCore.Identity;
+    using Petrolheads.Common;
     using Petrolheads.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
@@ -16,6 +17,8 @@ namespace Petrolheads.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Cars = new HashSet<Car>();
+            this.CoverPhotoUrl = GlobalConstants.DefaultCoverPhotoUrl;
+            this.ProfilePhotoUrl = GlobalConstants.DefaultProfilePhotoUrl;
         }
 
         public string CoverPhotoUrl { get; set; }
