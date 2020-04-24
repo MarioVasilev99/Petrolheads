@@ -1,0 +1,69 @@
+﻿@model Petrolheads.Web.ViewModels.Cars.CarDetailsViewModel;
+@{
+    ViewData["Title"] = $"Car - {Model.MakeName} {Model.Model}";
+}
+
+    <div class="container-fluid">
+        <div class="row mb-4">
+            <div class="col">
+                <img src="@Model.MainImageUrl" alt="car-image" class="col-md-12 car-profile-image" />
+                <div class="col-md-12">
+                    <h2 class="display-1">@Model.Year @Model.MakeName @Model.Model</h2>
+                    <h4 class="font-weight-light">
+                        Owner:
+                        <a class="badge-pill badge-light" asp-controller="Profiles" asp-action="Cars" asp-route-userId="@Model.UserId">
+                            @Model.UserUsername
+                        </a>
+                    </h4>
+                    @if (Model.IsEditable)
+                    {
+                        <a class="btn btn-primary btn-lg btn-block mt-3" asp-controller="Cars" asp-action="Edit">Edit Car</a>
+                    }
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-12">
+                <h3 class="display-4">Ride info</h3>
+                <hr />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p>Make: @Model.MakeName</p>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <p>Model: @Model.Model</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p>Year: @Model.Year</p>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <p>Weight: @Model.Weight</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p>Horsepower: @Model.Horsepower</p>
+            </div>
+
+            <div class="col-md-6 col-sm-12">
+                <p>Torque: @Model.Torque</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 col-sm-12">
+                <p>Top Speed: @Model.TopSpeed</p>
+            </div>
+        </div>
+    </div>
+

@@ -25,18 +25,20 @@
     <div class="container-fluid d-flex flex-wrap">
         @if (Model.IsProfileOwner)
         {
-            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Cars" asp-action="Create">Add Car</button>
+            <a class="btn btn-dark btn-lg btn-block" asp-controller="Cars" asp-action="Create">Add Car</a>
         }
         
         @foreach (var car in Model.Cars)
         {
-            <div class="d-flex flex-wrap border border-info m-1 w-100">
-                <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=200&h=200&q=80" alt="car-image" class="img-thumbnail">
-                <div class="d-inline-block align-self-end">
-                    <h2 class="">@car.Model</h2>
-                    <p class="">Added on @car.CreatedOn</p>
+            <a class="w-100" asp-controller="Cars" asp-action="Details" asp-route-carId="@car.Id">
+                <div class="d-flex flex-wrap border border-info m-1">
+                    <img src="@car.MainImageUrl" alt="car-image" class="img-thumbnail car-main-image">
+                    <div class="d-inline-block align-self-end">
+                        <h2 class="">@car.Model</h2>
+                        <p class="">Added on @car.CreatedOn</p>
+                    </div>
                 </div>
-            </div>
+            </a>
         }
     </div>
 </div>

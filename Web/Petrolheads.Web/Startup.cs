@@ -79,6 +79,8 @@
             services.AddTransient<IProfilesService, ProfilesService>();
             services.AddTransient<IPostsService, PostsService>();
             services.AddTransient<ILikesService, LikesService>();
+            services.AddTransient<IMakesService, MakesService>();
+            services.AddTransient<ICarsService, CarsService>();
             services.AddSingleton(cloudinary);
         }
 

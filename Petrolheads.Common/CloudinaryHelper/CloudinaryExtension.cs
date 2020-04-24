@@ -39,5 +39,32 @@
 
             return imageUrls;
         }
+
+        public static async Task<string> UploadFileAsync(Cloudinary cloudinary, IFormFile file)
+        {
+            string imageUrl = "";
+
+            byte[] destinationImage;
+
+            using (var memoryStream = new MemoryStream())
+            {
+                await file.CopyToAsync(memoryStream);
+                destinationImage = memoryStream.ToArray();
+            }
+
+            using (var destinationStream = new MemoryStream(destinationImage))
+            {
+                var uploadParams = new ImageUploadParams()
+                {
+                    File = new FileDescription(file.FileName, destinationStream),
+                };
+
+                var result = await cloudinary.UploadAsync(uploadParams);
+
+                imageUrl = result.Uri.AbsoluteUri;
+            }
+
+            return imageUrl;
+        }
     }
 }

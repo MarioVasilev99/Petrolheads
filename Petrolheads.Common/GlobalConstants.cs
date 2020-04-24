@@ -11,6 +11,13 @@
         // Create Post Validation Constants
         public const int PostDescriptionMaxLenght = 100;
 
+        // Add Car Validation Constants
+        public const int CarModelMaxLenght = 30;
+
+        public const int CarYearMinValue = 1885;
+
+        public const int CarYearMaxValue = 2025;
+
         // Application User Constants
         public const string DefaultCoverPhotoUrl = "https://res.cloudinary.com/dnzfktppn/image/upload/v1587670163/cover-image_z1hzzt.png";
 

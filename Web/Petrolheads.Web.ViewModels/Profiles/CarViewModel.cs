@@ -7,6 +7,8 @@
 
     public class CarViewModel : IMapFrom<Car>
     {
+        public int Id { get; set; }
+
         public string MainImageUrl { get; set; }
 
         public string MakeName { get; set; }
