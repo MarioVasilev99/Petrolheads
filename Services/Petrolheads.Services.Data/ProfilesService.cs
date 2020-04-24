@@ -5,6 +5,7 @@
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Mapping;
+    using Petrolheads.Web.ViewModels.Posts;
     using Petrolheads.Web.ViewModels.Profiles;
 
     public class ProfilesService : IProfilesService
@@ -24,6 +25,16 @@
                 .FirstOrDefault();
 
             return profileCarsViewModel;
+        }
+
+        public ProfilePostsViewModel GetUserInfoWithPosts(string userId)
+        {
+            var profilePostsViewModel = this.users.All()
+                .Where(u => u.Id == userId)
+                .To<ProfilePostsViewModel>()
+                .FirstOrDefault();
+
+            return profilePostsViewModel;
         }
     }
 }

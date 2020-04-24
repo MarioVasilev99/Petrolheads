@@ -37,6 +37,8 @@ namespace Petrolheads.Data.Models
 
         public virtual IEnumerable<Car> Cars { get; set; }
 
+        public virtual IEnumerable<Post> Posts { get; set; }
+
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
         public virtual ICollection<IdentityUserClaim<string>> Claims { get; set; }

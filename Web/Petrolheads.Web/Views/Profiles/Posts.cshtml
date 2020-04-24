@@ -1,0 +1,73 @@
+﻿@model Petrolheads.Web.ViewModels.Profiles.ProfilePostsViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="fb-profile">
+        <img align="left" class="fb-image-lg" src="https://res.cloudinary.com/dnzfktppn/image/upload/v1587670163/cover-image_z1hzzt.png" alt="Profile cover image" />
+        <img align="left" class="fb-image-profile thumbnail" src="https://res.cloudinary.com/dnzfktppn/image/upload/c_scale,w_300/v1587669032/profile-pic_qfrn8z.png" alt="Profile image" />
+        <div class="fb-profile-text">
+            <h1>@Model.UserName</h1>
+        </div>
+    </div>
+
+    <div class="container">
+        <nav class="nav nav-pills nav-fill mb-3 nav-menu">
+            <a class="nav-item nav-link mx-1" asp-controller="Profiles" asp-action="Cars" asp-route-userId="@Model.Id">Cars</a>
+            <a class="nav-item nav-link active mx-1" asp-controller="Profiles" asp-action="Posts" asp-route-userId="@Model.Id">Posts</a>
+            <a class="nav-item nav-link mx-1" asp-controller="Follower" asp-action="All" asp-route-userId="@Model.Id">Followers</a>
+        </nav>
+    </div>
+
+    <hr>
+
+    <div class="container-fluid d-flex flex-wrap justify-content-center">
+        @* Button if collection empty *@
+        @if (!Model.Posts.Any() && Model.IsProfileOwner)
+        {
+            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Posts" asp-action="Create">Add Car</button>
+        }
+        else
+        {
+            @foreach (var post in Model.Posts)
+            {
+                <div class="col-lg-7">
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <div class="media mb-3">
+                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="d-block ui-w-40 rounded-circle" alt="">
+                                <div class="media-body ml-3">
+                                    <a asp-controller="Profiles" asp-action="Cars" asp-route-userId="@post.UserId">@post.UserUserName</a>
+                                    <div class="text-muted small">@post.CreatedOn</div>
+                                </div>
+                            </div>
+
+                            <p>
+                                @post.Description
+                            </p>
+                            @if (post.Images.Any())
+                            {
+                                @foreach (var image in post.Images)
+                                {
+                                    <a href="#" class="ui-rect ui-bg-cover" style="background-image: url('@image.ImageUrl');"></a>
+                                }
+                            }
+                        </div>
+                        <div class="card-footer">
+                            <form id="likesForm" method="post"></form>
+                            <a href="" class="d-inline-block text-muted" onclick="like(@post.Id); return false">
+                                <small><strong id="likesCount-@post.Id">@post.LikesCount</strong> Likes</small>
+                            </a>
+                            <a href="" class="d-inline-block text-muted ml-3">
+                                <small><strong>0</strong> Comments</small>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+</div>
+
+

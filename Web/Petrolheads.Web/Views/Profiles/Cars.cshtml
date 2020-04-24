@@ -13,16 +13,18 @@
     </div>
 
     <div class="container">
-        <nav class="nav nav-pills nav-fill mb-3">
-            <a class="nav-item nav-link active mx-1" asp-controller="Profiles" asp-action="Cars">Cars</a>
-            <a class="nav-item nav-link mx-1" asp-controller="Post" asp-action="All">Posts</a>
-            <a class="nav-item nav-link mx-1" asp-controller="Follower" asp-action="All">Followers</a>
+        <nav class="nav nav-pills nav-fill mb-3 nav-menu">
+            <a class="nav-item nav-link active mx-1" asp-controller="Profiles" asp-action="Cars" asp-route-userId="@Model.Id">Cars</a>
+            <a class="nav-item nav-link mx-1" asp-controller="Profiles" asp-action="Posts" asp-route-userId="@Model.Id">Posts</a>
+            <a class="nav-item nav-link mx-1" asp-controller="Follower" asp-action="All" asp-route-userId="@Model.Id">Followers</a>
         </nav>
     </div>
 
+    <hr>
+
     <div class="container-fluid d-flex flex-wrap">
         @* Button if collection empty *@
-        @if (!Model.Cars.Any())
+        @if (!Model.Cars.Any() && Model.IsProfileOwner)
         {
             <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Cars" asp-action="Create">Add Car</button>
         }

@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using AutoMapper;
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Mapping;
 
