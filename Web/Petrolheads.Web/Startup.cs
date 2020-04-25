@@ -17,8 +17,12 @@
     using Petrolheads.Data.Models;
     using Petrolheads.Data.Repositories;
     using Petrolheads.Data.Seeding;
-    using Petrolheads.Services;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Cars;
+    using Petrolheads.Services.Data.Likes;
+    using Petrolheads.Services.Data.Makes;
+    using Petrolheads.Services.Data.Posts;
+    using Petrolheads.Services.Data.Profiles;
+    using Petrolheads.Services.Data.Settings;
     using Petrolheads.Services.Mapping;
     using Petrolheads.Services.Messaging;
     using Petrolheads.Web.ViewModels;

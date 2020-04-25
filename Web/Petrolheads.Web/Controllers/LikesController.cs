@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Data.Models;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Likes;
     using Petrolheads.Web.ViewModels.Likes;
     using Petrolheads.Web.ViewModels.Votes;
 

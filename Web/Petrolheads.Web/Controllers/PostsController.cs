@@ -1,12 +1,13 @@
 ﻿namespace Petrolheads.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Data.Models;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Posts;
     using Petrolheads.Web.ViewModels.Posts;
-    using System.Threading.Tasks;
 
     public class PostsController : Controller
     {

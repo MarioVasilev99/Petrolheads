@@ -1,7 +1,8 @@
-﻿namespace Petrolheads.Services.Data
+﻿namespace Petrolheads.Services.Data.Cars
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using Petrolheads.Common.CloudinaryHelper;
     using Petrolheads.Data.Common.Repositories;

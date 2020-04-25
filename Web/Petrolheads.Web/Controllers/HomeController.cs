@@ -4,7 +4,7 @@
 
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Posts;
     using Petrolheads.Web.ViewModels;
 
     [Authorize]

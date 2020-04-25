@@ -5,7 +5,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Common;
     using Petrolheads.Data.Models;
-    using Petrolheads.Services;
+    using Petrolheads.Services.Data.Profiles;
 
     public class ProfilesController : Controller
     {

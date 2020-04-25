@@ -4,15 +4,13 @@
     using System.Linq;
     using System.Threading.Tasks;
 
+    using Microsoft.EntityFrameworkCore;
+    using Moq;
     using Petrolheads.Data;
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
     using Petrolheads.Data.Repositories;
-
-    using Microsoft.EntityFrameworkCore;
-
-    using Moq;
-
+    using Petrolheads.Services.Data.Settings;
     using Xunit;
 
     public class SettingsServiceTests

@@ -6,7 +6,7 @@
     using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Settings;
     using Petrolheads.Web.ViewModels.Settings;
 
     public class SettingsController : BaseController

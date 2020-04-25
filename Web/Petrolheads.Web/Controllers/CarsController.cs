@@ -1,13 +1,15 @@
 ﻿namespace Petrolheads.Web.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using Microsoft.AspNetCore.Mvc.Rendering;
     using Petrolheads.Data.Models;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Cars;
+    using Petrolheads.Services.Data.Makes;
     using Petrolheads.Web.ViewModels.Cars;
-    using System.Threading.Tasks;
 
     public class CarsController : Controller
     {

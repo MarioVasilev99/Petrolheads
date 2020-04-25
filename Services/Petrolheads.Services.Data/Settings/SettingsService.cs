@@ -1,4 +1,4 @@
-﻿namespace Petrolheads.Services.Data
+﻿namespace Petrolheads.Services.Data.Settings
 {
     using System.Collections.Generic;
     using System.Linq;

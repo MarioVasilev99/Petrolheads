@@ -5,21 +5,19 @@
     using System.IO;
     using System.Threading.Tasks;
 
+    using CommandLine;
+    using Microsoft.EntityFrameworkCore;
+    using Microsoft.Extensions.Configuration;
+    using Microsoft.Extensions.DependencyInjection;
+    using Microsoft.Extensions.Logging;
     using Petrolheads.Data;
     using Petrolheads.Data.Common;
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
     using Petrolheads.Data.Repositories;
     using Petrolheads.Data.Seeding;
-    using Petrolheads.Services.Data;
+    using Petrolheads.Services.Data.Settings;
     using Petrolheads.Services.Messaging;
-
-    using CommandLine;
-
-    using Microsoft.EntityFrameworkCore;
-    using Microsoft.Extensions.Configuration;
-    using Microsoft.Extensions.DependencyInjection;
-    using Microsoft.Extensions.Logging;
 
     public static class Program
     {

@@ -1,4 +1,4 @@
-﻿namespace Petrolheads.Services.Data
+﻿namespace Petrolheads.Services.Data.Cars
 {
     using System.Threading.Tasks;
 

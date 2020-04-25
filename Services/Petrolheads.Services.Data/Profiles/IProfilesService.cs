@@ -1,4 +1,4 @@
-﻿namespace Petrolheads.Services
+﻿namespace Petrolheads.Services.Data.Profiles
 {
     using Petrolheads.Web.ViewModels.Profiles;
 

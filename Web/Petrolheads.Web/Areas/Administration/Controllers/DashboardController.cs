@@ -1,9 +1,8 @@
 ﻿namespace Petrolheads.Web.Areas.Administration.Controllers
 {
-    using Petrolheads.Services.Data;
-    using Petrolheads.Web.ViewModels.Administration.Dashboard;
-
     using Microsoft.AspNetCore.Mvc;
+    using Petrolheads.Services.Data.Settings;
+    using Petrolheads.Web.ViewModels.Administration.Dashboard;
 
     public class DashboardController : AdministrationController
     {
