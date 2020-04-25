@@ -9,5 +9,11 @@
         Task<int> CreateCar(string userId, AddCarInputModel input);
 
         CarDetailsViewModel GetCarDetails(int carId);
+
+        CarDetailsEditViewModel GetCarEditDetails(int carId);
+
+        Task DeleteCar(string userId, int carId);
+
+        Task EditCar(CarDetailsEditViewModel input);
     }
 }

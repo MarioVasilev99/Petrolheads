@@ -26,7 +26,7 @@
         @* Button if collection empty *@
         @if (!Model.Posts.Any() && Model.IsProfileOwner)
         {
-            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Posts" asp-action="Create">Add Car</button>
+            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Posts" asp-action="Create">Create Post</button>
         }
         else
         {

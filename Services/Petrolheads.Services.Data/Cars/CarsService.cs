@@ -47,12 +47,53 @@
             return newCar.Id;
         }
 
+        public async Task DeleteCar(string userId, int carId)
+        {
+            var carToDelete = this.carRepository
+                .All()
+                .FirstOrDefault(c => c.UserId == userId && c.Id == carId);
+
+            this.carRepository.Delete(carToDelete);
+            await this.carRepository.SaveChangesAsync();
+        }
+
+        public async Task EditCar(CarDetailsEditViewModel input)
+        {
+            var carToEdit = this.carRepository
+                .All()
+                .FirstOrDefault(c => c.Id == input.Id);
+
+            if (input.MainImage != null)
+            {
+                var carMainImageUrl = await CloudinaryExtension.UploadFileAsync(this.cloudinary, input.MainImage);
+                carToEdit.MainImageUrl = carMainImageUrl;
+            }
+
+            carToEdit.Model = input.Model;
+            carToEdit.Year = input.Year;
+            carToEdit.Horsepower = input.Horsepower;
+            carToEdit.Torque = input.Torque;
+            carToEdit.Weight = input.Weight;
+            carToEdit.TopSpeed = input.TopSpeed;
+
+            await this.carRepository.SaveChangesAsync();
+        }
+
         public CarDetailsViewModel GetCarDetails(int carId)
         {
             return this.carRepository
                 .All()
                 .Where(c => c.Id == carId)
                 .To<CarDetailsViewModel>()
+                .FirstOrDefault();
+        }
+
+        public CarDetailsEditViewModel GetCarEditDetails(int carId)
+        {
+            return this.carRepository
+                .All()
+                .Where(c => c.Id == carId)
+                .To<CarDetailsEditViewModel>()
                 .FirstOrDefault();
         }
     }

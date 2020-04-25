@@ -10,6 +10,7 @@
         public Car()
         {
             this.Photos = new HashSet<CarPhoto>();
+            this.MainImageUrl = "https://res.cloudinary.com/dnzfktppn/image/upload/c_fill,h_230,w_350/v1587844592/no-car-image_zozssn.png";
         }
 
         public string MainImageUrl { get; set; }

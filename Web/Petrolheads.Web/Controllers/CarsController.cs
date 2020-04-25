@@ -50,15 +50,20 @@
             }
 
             var userId = this.userManager.GetUserId(this.User);
-            var carId = await this.carsService.CreateCar(userId, input);
+            await this.carsService.CreateCar(userId, input);
 
             return this.RedirectToAction("Cars", "Profiles");
         }
 
         [Authorize]
-        public IActionResult Details(int carId)
+        public IActionResult Details(int? carId)
         {
-            var carDetailsViewModel = this.carsService.GetCarDetails(carId);
+            if (carId == null)
+            {
+                return this.NotFound();
+            }
+
+            var carDetailsViewModel = this.carsService.GetCarDetails((int)carId);
 
             if (carDetailsViewModel == null)
             {
@@ -70,6 +75,71 @@
             carDetailsViewModel.IsEditable = isEditable;
 
             return this.View(carDetailsViewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Delete(int? carId)
+        {
+            if (carId == null)
+            {
+                return this.NotFound();
+            }
+
+            var carDetailsViewModel = this.carsService.GetCarDetails((int)carId);
+
+            if (carDetailsViewModel == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(carDetailsViewModel);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public async Task<IActionResult> DeleteConfirm(int? carId)
+        {
+            if (carId == null)
+            {
+                return this.NotFound();
+            }
+
+            var userId = this.userManager.GetUserId(this.User);
+            await this.carsService.DeleteCar(userId, (int)carId);
+
+            return this.RedirectToAction("Cars", "Profiles", new { userId = userId });
+        }
+
+        [HttpGet]
+        [Authorize]
+        public IActionResult Edit(int? carId)
+        {
+            if (carId == null)
+            {
+                return this.NotFound();
+            }
+
+            var carDetailsEditViewModel = this.carsService.GetCarEditDetails((int)carId);
+            if (carDetailsEditViewModel == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(carDetailsEditViewModel);
+        }
+
+        [HttpPost]
+        [Authorize]
+        public async Task<IActionResult> Edit(CarDetailsEditViewModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            await this.carsService.EditCar(input);
+            return this.RedirectToAction("Details", "Cars", new { carId = input.Id });
         }
     }
 }

@@ -30,15 +30,24 @@
         
         @foreach (var car in Model.Cars)
         {
-            <a class="w-100" asp-controller="Cars" asp-action="Details" asp-route-carId="@car.Id">
-                <div class="d-flex flex-wrap border border-info m-1">
-                    <img src="@car.MainImageUrl" alt="car-image" class="img-thumbnail car-main-image">
-                    <div class="d-inline-block align-self-end">
-                        <h2 class="">@car.Model</h2>
-                        <p class="">Added on @car.CreatedOn</p>
+                <div class="container border border-primary m-1">
+                    <div class="row align-items-end">
+                        <div class="col-md-5 col-lg-4 p-0">
+                            <img src="@car.MainImageUrl" alt="car-image" class="car-main-image">
+                        </div>
+                        <div class="col-md-4 col-lg-5 p-0">
+                            <h2 class="">@car.MakeName @car.Model</h2>
+                            <p class="">Added on @car.CreatedOn</p>
+                        </div>
+                        <div class="col-md-3 p-1">
+                            <a class="btn btn-block btn-primary" asp-controller="Cars" asp-action="Details" asp-route-carId="@car.Id">Details</a>
+                            @if (Model.IsProfileOwner)
+                            {
+                                <a class="btn btn-block btn-danger" asp-controller="Cars" asp-action="Delete" asp-route-carId="@car.Id">Remove Car</a>
+                            }
+                        </div>
                     </div>
                 </div>
-            </a>
         }
     </div>
 </div>

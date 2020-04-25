@@ -17,7 +17,7 @@
                     </h4>
                     @if (Model.IsEditable)
                     {
-                        <a class="btn btn-primary btn-lg btn-block mt-3" asp-controller="Cars" asp-action="Edit">Edit Car</a>
+                        <a class="btn btn-primary btn-lg btn-block mt-3" asp-controller="Cars" asp-action="Edit" asp-route-carId="@Model.Id">Edit Car</a>
                     }
                 </div>
             </div>

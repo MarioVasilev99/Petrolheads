@@ -1,6 +1,7 @@
-﻿.car-main-image {
+﻿.car-main-image,
+.car-image-upload {
     width: 350px;
-    height: auto;
+    height: 230px;
 }
 
 .car-profile-image {
@@ -8,4 +9,15 @@
     padding: 0.5em;
     border-radius: 0.5em;
     background-color: orange;
+}
+
+/*Edit Car View Styling*/
+
+.main-img-input {
+    width: 0.1px;
+    height: 0.1px;
+    opacity: 0;
+    overflow: hidden;
+    position: absolute;
+    z-index: -1;
 }
