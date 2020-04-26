@@ -22,7 +22,16 @@
                     <td>@post.Id</td>
                     <td>@post.UserUserName</td>
                     <td>@post.Description</td>
-                    <td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+                    <td class="text-center">
+                        <a asp-area="Administration" asp-controller="ManagePosts" asp-action="EditPost" asp-route-postId="@post.Id" asp-route-userId="@post.UserId" class='btn btn-info btn-xs'>
+                            <span class="glyphicon glyphicon-edit"></span>
+                             Edit
+                        </a>
+                        <a asp-area="Administration" asp-controller="ManagePosts" asp-action="DeletePost" asp-route-postId="@post.Id" onclick="return confirm('Are you sure you want to delete this post?')" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span>
+                             Del
+                        </a>
+                    </td>
                 </tr>
             }
         </table>

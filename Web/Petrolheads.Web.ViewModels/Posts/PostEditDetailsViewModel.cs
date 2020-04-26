@@ -11,6 +11,10 @@
 
         public string Description { get; set; }
 
+        public string UserId { get; set; }
+
+        public bool IsAdminArea { get; set; }
+
         public IEnumerable<PostImageViewModel> Images { get; set; }
     }
 }

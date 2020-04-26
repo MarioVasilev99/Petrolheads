@@ -10,6 +10,8 @@
     {
         public int Id { get; set; }
 
+        public string UserId { get; set; }
+
         [Required]
         [StringLength(GlobalConstants.PostDescriptionMaxLenght, ErrorMessage = "{0} length can't be more than {1}.")]
         public string Description { get; set; }
