@@ -13,11 +13,21 @@
 
 /*Edit Car View Styling*/
 
-.main-img-input {
+.main-img-input,
+.add-post-img-label {
     width: 0.1px;
     height: 0.1px;
     opacity: 0;
     overflow: hidden;
     position: absolute;
     z-index: -1;
+}
+
+/*Add Post View Styling*/
+
+.post-add-image {
+    display: none;
+    width: 450px;
+    height: 330px;
+    margin-bottom: 1em;
 }

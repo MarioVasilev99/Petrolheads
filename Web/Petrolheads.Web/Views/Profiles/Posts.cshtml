@@ -26,44 +26,46 @@
         @* Button if collection empty *@
         @if (!Model.Posts.Any() && Model.IsProfileOwner)
         {
-            <button type="button" class="btn btn-dark btn-lg btn-block" asp-controller="Posts" asp-action="Create">Create Post</button>
+            <a class="btn btn-dark btn-lg btn-block" asp-controller="Posts" asp-action="Create">Create Post</a>
         }
         else
         {
             @foreach (var post in Model.Posts)
             {
                 <div class="col-lg-7">
-                    <div class="card mb-4">
-                        <div class="card-body">
-                            <div class="media mb-3">
-                                <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="d-block ui-w-40 rounded-circle" alt="">
-                                <div class="media-body ml-3">
-                                    <a asp-controller="Profiles" asp-action="Cars" asp-route-userId="@post.UserId">@post.UserUserName</a>
-                                    <div class="text-muted small">@post.CreatedOn</div>
+                    <a asp-controller="Posts" asp-action="Details" asp-route-postId="@post.Id">
+                        <div class="card mb-4">
+                            <div class="card-body">
+                                <div class="media mb-3">
+                                    <img src="https://bootdey.com/img/Content/avatar/avatar3.png" class="d-block ui-w-40 rounded-circle" alt="">
+                                    <div class="media-body ml-3">
+                                        <a asp-controller="Profiles" asp-action="Cars" asp-route-userId="@post.UserId">@post.UserUserName</a>
+                                        <div class="text-muted small">@post.CreatedOn</div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <p>
-                                @post.Description
-                            </p>
-                            @if (post.Images.Any())
-                            {
-                                @foreach (var image in post.Images)
+                                <p>
+                                    @post.Description
+                                </p>
+                                @if (post.Images.Any())
                                 {
-                                    <a href="#" class="ui-rect ui-bg-cover" style="background-image: url('@image.ImageUrl');"></a>
+                                    @foreach (var image in post.Images)
+                                    {
+                                        <a href="#" class="ui-rect ui-bg-cover" style="background-image: url('@image.ImageUrl');"></a>
+                                    }
                                 }
-                            }
+                            </div>
+                            <div class="card-footer">
+                                <form id="likesForm" method="post"></form>
+                                <a href="" class="d-inline-block text-muted" onclick="like(@post.Id); return false">
+                                    <small><strong id="likesCount-@post.Id">@post.LikesCount</strong> Likes</small>
+                                </a>
+                                <a href="" class="d-inline-block text-muted ml-3">
+                                    <small><strong>0</strong> Comments</small>
+                                </a>
+                            </div>
                         </div>
-                        <div class="card-footer">
-                            <form id="likesForm" method="post"></form>
-                            <a href="" class="d-inline-block text-muted" onclick="like(@post.Id); return false">
-                                <small><strong id="likesCount-@post.Id">@post.LikesCount</strong> Likes</small>
-                            </a>
-                            <a href="" class="d-inline-block text-muted ml-3">
-                                <small><strong>0</strong> Comments</small>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             }
         }
