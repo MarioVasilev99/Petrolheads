@@ -1,12 +1,13 @@
 ﻿namespace Petrolheads.Data.Seeding
 {
-    using Petrolheads.Data.Models;
     using System;
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
 
-    public class CarMakesSeeder : ISeeder
+    using Petrolheads.Data.Models;
+
+    internal class CarMakesSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
         {

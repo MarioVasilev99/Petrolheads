@@ -6,6 +6,8 @@
 
         public const string AdministratorRoleName = "Administrator";
 
+        public const string UserRoleName = "User";
+
         public const int UsernameMaxLenght = 20;
 
         // Create Post Validation Constants
