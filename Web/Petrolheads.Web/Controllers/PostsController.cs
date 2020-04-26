@@ -40,5 +40,55 @@
 
             return this.Redirect("/");
         }
+
+        [Authorize]
+        [HttpGet]
+        public IActionResult Edit(int? postId)
+        {
+            if (postId == null)
+            {
+                return this.NotFound();
+            }
+
+            var userId = this.userManager.GetUserId(this.User);
+            var postEditViewModel = this.postsService.GetPostEditDetails(userId, (int)postId);
+
+            if (postEditViewModel == null)
+            {
+                return this.NotFound();
+            }
+
+            return this.View(postEditViewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditPostInputModel input)
+        {
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(input);
+            }
+
+            var userId = this.userManager.GetUserId(this.User);
+            await this.postsService.EditPost(userId, input);
+
+            return this.RedirectToAction("Posts", "Profiles", new { userId = userId });
+        }
+
+        [Authorize]
+        [HttpGet]
+        public async Task<IActionResult> Delete(int? postId)
+        {
+            if (postId == null)
+            {
+                return this.NotFound();
+            }
+
+            var userId = this.userManager.GetUserId(this.User);
+            await this.postsService.DeletePost(userId, (int)postId);
+
+            return this.RedirectToAction("Posts", "Profiles", new { userId = userId });
+        }
     }
 }

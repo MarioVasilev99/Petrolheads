@@ -14,11 +14,16 @@
     public class PostsService : IPostsService
     {
         private readonly IDeletableEntityRepository<Post> posts;
+        private readonly IDeletableEntityRepository<PostImage> postImages;
         private readonly Cloudinary cloudinary;
 
-        public PostsService(IDeletableEntityRepository<Post> posts, Cloudinary cloudinary)
+        public PostsService(
+            IDeletableEntityRepository<Post> posts,
+            IDeletableEntityRepository<PostImage> postImages,
+            Cloudinary cloudinary)
         {
             this.posts = posts;
+            this.postImages = postImages;
             this.cloudinary = cloudinary;
         }
 
@@ -47,6 +52,39 @@
             return newPost.Id;
         }
 
+        public async Task DeletePost(string userId, int postId)
+        {
+            var postToDelete = this.posts
+                .All()
+                .FirstOrDefault(p => p.Id == postId && p.UserId == userId);
+
+            this.posts.Delete(postToDelete);
+            await this.posts.SaveChangesAsync();
+        }
+
+        public async Task EditPost(string userId, EditPostInputModel input)
+        {
+            var postToEdit = this.posts
+                .All()
+                .FirstOrDefault(p => p.Id == input.Id);
+
+            var postImageUrls = new List<string>();
+            if (input.Images != null)
+            {
+                var postImagesUrls = await CloudinaryExtension.UploadAsync(this.cloudinary, input.Images);
+                foreach (var url in postImagesUrls)
+                {
+                    postImageUrls.Add(url);
+                }
+
+                var postImage = this.postImages.All().FirstOrDefault(p => p.PostId == postToEdit.Id);
+                postImage.ImageUrl = postImageUrls[0];
+            }
+
+            postToEdit.Description = input.Description;
+            await this.posts.SaveChangesAsync();
+        }
+
         public AllPostsViewModel GetAll(int? count = null)
         {
             IQueryable<Post> posts = this.posts.All().OrderByDescending(p => p.CreatedOn);
@@ -62,6 +100,15 @@
             {
                 Posts = allPosts,
             };
+        }
+
+        public PostEditDetailsViewModel GetPostEditDetails(string userId, int postId)
+        {
+            return this.posts
+                .All()
+                .Where(p => p.Id == postId && p.UserId == userId)
+                .To<PostEditDetailsViewModel>()
+                .FirstOrDefault();
         }
     }
 }

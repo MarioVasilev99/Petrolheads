@@ -6,6 +6,7 @@
     using Petrolheads.Common;
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Data.Profiles;
+    using System.Linq;
 
     public class ProfilesController : Controller
     {
@@ -35,6 +36,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         public IActionResult Posts(string userId)
         {
             var currentUserId = this.userManager.GetUserId(this.User);

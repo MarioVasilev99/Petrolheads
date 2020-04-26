@@ -31,3 +31,17 @@
     height: 330px;
     margin-bottom: 1em;
 }
+
+/*Edit Post View Styling*/
+
+.post-edit-image {
+    width: 200px;
+    height: 200px;
+}
+
+/*Profile Posts View Styling*/
+
+.remove-icon {
+    color: red;
+    margin-left: 0.2em;
+}
