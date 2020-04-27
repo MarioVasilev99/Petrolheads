@@ -31,7 +31,7 @@
                 PostsCount = this.posts.All().Count(),
                 CarsCount = this.cars.All().Count(),
                 MakesCount = this.makes.All().Count(),
-                UsersCount = this.makes.All().Count(),
+                UsersCount = this.users.All().Count(),
             };
         }
     }

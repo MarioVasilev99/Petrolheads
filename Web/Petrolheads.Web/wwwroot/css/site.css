@@ -4,6 +4,11 @@
     height: 230px;
 }
 
+.car-main-image-small {
+    width: 180px;
+    height: 100px;
+}
+
 .car-profile-image {
     border: 2px solid black;
     padding: 0.5em;
