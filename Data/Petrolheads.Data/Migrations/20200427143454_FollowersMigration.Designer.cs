@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Petrolheads.Data;
 
 namespace Petrolheads.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200427143454_FollowersMigration")]
+    partial class FollowersMigration
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -346,7 +348,7 @@ namespace Petrolheads.Data.Migrations
                     b.ToTable("CarPhotos");
                 });
 
-            modelBuilder.Entity("Petrolheads.Data.Models.Follower", b =>
+            modelBuilder.Entity("Petrolheads.Data.Models.Follow", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -358,13 +360,6 @@ namespace Petrolheads.Data.Migrations
 
                     b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<string>("FollowedById")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(450)");
-
-                    b.Property<int>("FollowerType")
-                        .HasColumnType("int");
 
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
@@ -378,13 +373,11 @@ namespace Petrolheads.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("FollowedById");
-
                     b.HasIndex("IsDeleted");
 
                     b.HasIndex("UserId");
 
-                    b.ToTable("Followers");
+                    b.ToTable("Follows");
                 });
 
             modelBuilder.Entity("Petrolheads.Data.Models.Like", b =>
@@ -632,16 +625,10 @@ namespace Petrolheads.Data.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("Petrolheads.Data.Models.Follower", b =>
+            modelBuilder.Entity("Petrolheads.Data.Models.Follow", b =>
                 {
-                    b.HasOne("Petrolheads.Data.Models.ApplicationUser", "FollowedBy")
-                        .WithMany("Following")
-                        .HasForeignKey("FollowedById")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Petrolheads.Data.Models.ApplicationUser", "User")
-                        .WithMany("Followers")
+                        .WithMany("Follows")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();

@@ -5,7 +5,6 @@
     using Petrolheads.Data.Common.Repositories;
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Mapping;
-    using Petrolheads.Web.ViewModels.Posts;
     using Petrolheads.Web.ViewModels.Profiles;
 
     public class ProfilesService : IProfilesService

@@ -17,6 +17,8 @@ namespace Petrolheads.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
             this.Cars = new HashSet<Car>();
+            this.Followers = new HashSet<Follower>();
+            this.Following = new HashSet<Follower>();
             this.CoverPhotoUrl = GlobalConstants.DefaultCoverPhotoUrl;
             this.ProfilePhotoUrl = GlobalConstants.DefaultProfilePhotoUrl;
         }
@@ -38,6 +40,10 @@ namespace Petrolheads.Data.Models
         public virtual IEnumerable<Car> Cars { get; set; }
 
         public virtual IEnumerable<Post> Posts { get; set; }
+
+        public virtual ICollection<Follower> Followers { get; set; }
+
+        public virtual ICollection<Follower> Following { get; set; }
 
         public virtual ICollection<IdentityUserRole<string>> Roles { get; set; }
 
