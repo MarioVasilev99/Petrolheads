@@ -55,10 +55,11 @@
                     <span class="dbox__count">@Model.UsersCount</span>
                     <span class="dbox__title">Users</span>
                 </div>
-
-                <div class="dbox__action">
-                    <button class="dbox__action__btn">More Info</button>
-                </div>
+                <a asp-area="Administration" asp-controller="ManageUsers" asp-action="Index">
+                    <div class="dbox__action">
+                        <button class="dbox__action__btn">More Info</button>
+                    </div>
+                </a>
             </div>
         </div>
     </div>

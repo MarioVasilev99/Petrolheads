@@ -1,0 +1,39 @@
+﻿@model Petrolheads.Web.ViewModels.Administration.ManageUsers.ManageUsersAllViewModel
+@{
+    this.ViewData["Title"] = "Manage Users";
+}
+
+<h1>Users</h1>
+
+<div class="container">
+    <div class="row col-md-12 col-md-offset-2 custyle">
+        <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Username</th>
+                    <th>Created On</th>
+                    <th class="text-center">Action</th>
+                </tr>
+            </thead>
+            @foreach (var user in Model.Users)
+            {
+                <tr>
+                    <td>@user.Id</td>
+                    <td>@user.UserName</td>
+                    <td>@user.CreatedOn</td>
+                    <td class="text-center">
+                        <a asp-area="Administration" asp-controller="ManagePosts" asp-action="EditPost" asp-route-postId="" asp-route-userId="" class='btn btn-info btn-xs'>
+                            <span class="glyphicon glyphicon-edit"></span>
+                            Edit
+                        </a>
+                        <a asp-area="Administration" asp-controller="ManagePosts" asp-action="DeletePost" asp-route-postId="" onclick="return confirm('Are you sure you want to delete this post?')" class="btn btn-danger btn-xs">
+                            <span class="glyphicon glyphicon-remove"></span>
+                            Del
+                        </a>
+                    </td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>
