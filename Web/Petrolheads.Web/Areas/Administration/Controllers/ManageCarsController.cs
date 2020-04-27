@@ -1,12 +1,13 @@
 ﻿namespace Petrolheads.Web.Areas.Administration.Controllers
 {
+    using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Mvc;
     using Petrolheads.Common;
     using Petrolheads.Services.Data.Administration.ManageCars;
     using Petrolheads.Services.Data.Cars;
     using Petrolheads.Web.ViewModels.Cars;
-    using System.Threading.Tasks;
 
     [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     [Area("Administration")]

@@ -1,0 +1,26 @@
+﻿@model Petrolheads.Web.ViewModels.Administration.ManageMakes.ManageAllMakesViewModel
+@{
+    this.ViewData["Title"] = "Manage Makes";
+}
+
+<h1>Makes</h1>
+
+<div class="container">
+    <div class="row col-md-12 col-md-offset-1 custyle">
+        <table class="table table-striped custab">
+            <thead>
+                <tr>
+                    <th>Make Id</th>
+                    <th>Name</th>
+                </tr>
+            </thead>
+            @foreach (var make in Model.Makes)
+            {
+                <tr>
+                    <td>@make.Id</td>
+                    <td>@make.Name</td>
+                </tr>
+            }
+        </table>
+    </div>
+</div>

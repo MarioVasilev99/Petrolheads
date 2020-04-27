@@ -19,6 +19,7 @@
     using Petrolheads.Data.Seeding;
     using Petrolheads.Services.Data.Administration.Dashboard;
     using Petrolheads.Services.Data.Administration.ManageCars;
+    using Petrolheads.Services.Data.Administration.ManageMakes;
     using Petrolheads.Services.Data.Administration.ManagePosts;
     using Petrolheads.Services.Data.Cars;
     using Petrolheads.Services.Data.Likes;
@@ -91,6 +92,7 @@
             services.AddTransient<IDashboardService, DashboardService>();
             services.AddTransient<IManagePostsService, ManagePostsService>();
             services.AddTransient<IManageCarsService, ManageCarsService>();
+            services.AddTransient<IManageMakesService, ManageMakesService>();
             services.AddSingleton(cloudinary);
         }
 
