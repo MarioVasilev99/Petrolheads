@@ -1,5 +1,6 @@
 ﻿namespace Petrolheads.Services.Data.Posts
 {
+    using System.Collections.Generic;
     using System.Threading.Tasks;
 
     using Petrolheads.Web.ViewModels.Posts;
@@ -15,5 +16,9 @@
         Task EditPost(string userId, EditPostInputModel input);
 
         Task DeletePost(string userId, int postId);
+
+        IEnumerable<T> GetPosts<T>(int? take = null, int skip = 0);
+
+        int GetCount();
     }
 }

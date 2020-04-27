@@ -7,6 +7,10 @@
 
     public class AllPostsViewModel : IMapFrom<Post>
     {
-        public IEnumerable<PostViewModel> Posts { get; set; }
+        public IEnumerable<PostViewModel> AllPosts { get; set; }
+
+        public int PagesCount { get; set; }
+
+        public int CurrentPage { get; set; }
     }
 }

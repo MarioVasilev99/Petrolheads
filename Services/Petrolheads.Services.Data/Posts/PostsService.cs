@@ -96,10 +96,12 @@
 
             var allPosts = posts.To<PostViewModel>().ToList();
 
-            return new AllPostsViewModel()
-            {
-                Posts = allPosts,
-            };
+            return null;
+        }
+
+        public int GetCount()
+        {
+            return this.posts.All().Count();
         }
 
         public PostEditDetailsViewModel GetPostEditDetails(string userId, int postId)
@@ -109,6 +111,20 @@
                 .Where(p => p.Id == postId && p.UserId == userId)
                 .To<PostEditDetailsViewModel>()
                 .FirstOrDefault();
+        }
+
+        public IEnumerable<T> GetPosts<T>(int? take = null, int skip = 0)
+        {
+            var query = this.posts
+                .All()
+                .OrderByDescending(p => p.CreatedOn)
+                .Skip(skip);
+            if (take.HasValue)
+            {
+                query = query.Take(take.Value);
+            }
+
+            return query.To<T>().ToList();
         }
     }
 }
