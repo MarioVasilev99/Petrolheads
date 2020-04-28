@@ -22,7 +22,7 @@
             <a class="nav-item nav-link mx-1" asp-controller="Profiles" asp-action="Posts" asp-route-userId="@Model.Id">Posts</a>
             @if (Model.IsProfileOwner)
             {
-        <a class="nav-item nav-link mx-1" asp-controller="Profiles" asp-action="Followed" asp-route-userId="@Model.Id">Followed</a>
+                <a class="nav-item nav-link mx-1" asp-controller="Profiles" asp-action="Followed" asp-route-userId="@Model.Id">Followed</a>
             }
         </nav>
     </div>
