@@ -1,6 +1,7 @@
 ﻿namespace Petrolheads.Web.Controllers
 {
     using System.Threading.Tasks;
+
     using Microsoft.AspNetCore.Authorization;
     using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
@@ -8,35 +9,27 @@
     using Petrolheads.Services.Data.Follows;
     using Petrolheads.Web.ViewModels.Follows;
 
-    [ApiController]
-    [Route("api/[controller]")]
     public class FollowsController : Controller
     {
-        private readonly UserManager<ApplicationUser> userManager;
         private readonly IFollowsService followsService;
+        private readonly UserManager<ApplicationUser> userManager;
 
         public FollowsController(
-            UserManager<ApplicationUser> userManager,
-            IFollowsService followsService)
+            IFollowsService followsService,
+            UserManager<ApplicationUser> userManager)
         {
-            this.userManager = userManager;
             this.followsService = followsService;
+            this.userManager = userManager;
         }
 
         [Authorize]
-        [HttpPost]
-        public async Task<ActionResult<FollowResponseModel>> Follow(FollowInputModel input)
+        [Route("/[controller]/[action]")]
+        public async Task<IActionResult> Unfollow(UnfollowInputModel input)
         {
-            var userToFollow = await this.userManager.FindByIdAsync(input.UserId);
-
-            if (userToFollow == null)
-            {
-                return this.NotFound();
-            }
+            await this.followsService.UnfollowUserAsync(input.UserId, input.FollowedUserId);
 
             var currentUserId = this.userManager.GetUserId(this.User);
-            var isSuccessful = await this.followsService.FollowUserAsync(currentUserId, input.UserId);
-            return isSuccessful;
+            return this.RedirectToAction("Followed", "Profiles", new { userId = currentUserId });
         }
     }
 }

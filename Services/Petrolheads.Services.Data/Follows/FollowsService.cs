@@ -57,5 +57,12 @@
             return this.followersRepository.All()
                 .Any(f => f.UserId == queryUserId && f.FollowedById == currentUserId);
         }
+
+        public async Task UnfollowUserAsync(string userId, string followedUserId)
+        {
+            var follow = this.followersRepository.All().FirstOrDefault(f => f.UserId == followedUserId && f.FollowedById == userId);
+            this.followersRepository.Delete(follow);
+            await this.followersRepository.SaveChangesAsync();
+        }
     }
 }

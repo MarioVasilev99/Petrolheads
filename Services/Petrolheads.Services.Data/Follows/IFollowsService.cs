@@ -10,6 +10,6 @@
 
         public bool IsFollowed(string queryUserId, string currentUserId);
 
-
+        Task UnfollowUserAsync(string userId, string followedUserId);
     }
 }

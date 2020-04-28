@@ -2,7 +2,7 @@
     var followInfo = { userId: userId };
     var token = $("#followsForm input[name=__RequestVerificationToken]").val();
     $.ajax({
-        url: "/api/follows",
+        url: "/api/followApi",
         type: "POST",
         data: JSON.stringify(followInfo),
         contentType: "application/json; charset=utf-8",
