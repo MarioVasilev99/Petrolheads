@@ -9,5 +9,7 @@
         Task<FollowResponseModel> FollowUserAsync(string currentUserId, string userToFollowId);
 
         public bool IsFollowed(string queryUserId, string currentUserId);
+
+
     }
 }

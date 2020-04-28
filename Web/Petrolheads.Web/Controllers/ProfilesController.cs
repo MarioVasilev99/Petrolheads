@@ -63,5 +63,18 @@
 
             return this.View(viewModel);
         }
+
+        public IActionResult Followed(string userId)
+        {
+            var currentUserId = this.userManager.GetUserId(this.User);
+
+            if (userId == null)
+            {
+                userId = currentUserId;
+            }
+
+            var viewModel = this.profilesService.GetUserInfoWithFollowed(userId);
+            return this.View(viewModel);
+        }
     }
 }

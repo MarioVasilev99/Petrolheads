@@ -7,5 +7,7 @@
         ProfileCarsViewModel GetUserInfoWithCars(string userId);
 
         ProfilePostsViewModel GetUserInfoWithPosts(string userId);
+
+        ProfileFollowedViewModel GetUserInfoWithFollowed(string userId);
     }
 }

@@ -49,7 +49,8 @@
                 options => options.UseSqlServer(this.configuration.GetConnectionString("DefaultConnection")));
 
             services.AddDefaultIdentity<ApplicationUser>(IdentityOptionsProvider.GetIdentityOptions)
-                .AddRoles<ApplicationRole>().AddEntityFrameworkStores<ApplicationDbContext>();
+                .AddRoles<ApplicationRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.Configure<CookiePolicyOptions>(
                 options =>
@@ -91,7 +92,7 @@
             services.AddScoped<IDbQueryRunner, DbQueryRunner>();
 
             // Application services
-            services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
+            services.AddTransient<IEmailSender>(x => new SendGridEmailSender("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"));
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<IProfilesService, ProfilesService>();
             services.AddTransient<IPostsService, PostsService>();

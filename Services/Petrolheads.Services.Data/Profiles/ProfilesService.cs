@@ -35,5 +35,15 @@
 
             return profilePostsViewModel;
         }
+
+        public ProfileFollowedViewModel GetUserInfoWithFollowed(string userId)
+        {
+            var profileFollowedViewModel = this.users.All()
+                .Where(u => u.Id == userId)
+                .To<ProfileFollowedViewModel>()
+                .FirstOrDefault();
+
+            return profileFollowedViewModel;
+        }
     }
 }

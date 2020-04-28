@@ -4,6 +4,8 @@
     {
         public const string SystemName = "Petrolheads";
 
+        public const string SystemEmail = "admin@petrolheads.com";
+
         public const string AdministratorRoleName = "Administrator";
 
         public const string UserRoleName = "User";
