@@ -7,6 +7,8 @@
     using Petrolheads.Data.Models;
     using Petrolheads.Services.Data.Follows;
     using Petrolheads.Services.Data.Profiles;
+    using Petrolheads.Web.ViewModels.Profiles;
+    using System.Threading.Tasks;
 
     public class ProfilesController : Controller
     {
@@ -64,6 +66,7 @@
             return this.View(viewModel);
         }
 
+        [Authorize]
         public IActionResult Followed(string userId)
         {
             var currentUserId = this.userManager.GetUserId(this.User);
@@ -75,6 +78,29 @@
 
             var viewModel = this.profilesService.GetUserInfoWithFollowed(userId);
             return this.View(viewModel);
+        }
+
+        [Authorize]
+        public IActionResult ProfilePhotoEdit()
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var currentProfilePhotoUrl = this.profilesService.GetProfilePhotoUrl(userId);
+            var viewModel = new NewProfilePhotoInputModel()
+            {
+                UserId = userId,
+                CurrentProfilePhotoUrl = currentProfilePhotoUrl,
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ProfilePhotoEdit(NewProfilePhotoInputModel input)
+        {
+            await this.profilesService.ChangeProfilePhoto(input);
+
+            return this.RedirectToAction("Cars", "Profiles", new { userId = input.UserId });
         }
     }
 }

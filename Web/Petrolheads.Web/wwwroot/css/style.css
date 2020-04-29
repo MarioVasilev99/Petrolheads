@@ -567,7 +567,7 @@ Hero section
 	position: relative;
 }
 
-.hero-section .container {
+.hero-section .profile-img-container {
 	position: relative;
 	z-index: 99;
 }
@@ -785,7 +785,7 @@ Info section
 Score section
  ---------------------*/
 
-.score-section .container {
+.score-section .profile-img-container {
 	padding: 103px 15px 95px;
 	position: relative;
 }
@@ -1421,7 +1421,7 @@ Contact Page
 }
 
 @media (min-width: 1200px) {
-	.container {
+	.profile-img-container {
 		max-width: 1176px;
 	}
 }

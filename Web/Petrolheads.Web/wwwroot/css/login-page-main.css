@@ -1,0 +1,13 @@
+.img-col img {
+    border-radius: 1em;
+}
+
+.fb-icon {
+    color: white;
+}
+
+.btn-fb {
+    background-color: #3b5998;
+    border: none;
+    color: #3b5998;
+}
