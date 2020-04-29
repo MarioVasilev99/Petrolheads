@@ -16,7 +16,7 @@
         <input class="d-none" asp-for="UserId" value="@Model.UserId" />
 
         <div class="row align-content-end justify-content-center">
-            <img src="@Model.CurrentProfilePhotoUrl" class="car-image-upload col-3" id="current-main-image" />
+            <img src="@Model.CurrentProfilePhotoUrl" class="cover-photo-upload col-10" id="current-main-image" />
             <div class="col-2 align-self-end">
                 <label class="main-img-label btn btn-lg btn-primary m-0" asp-for="ProfilePhoto">Upload</label>
                 <input asp-for="ProfilePhoto" type="file" class="main-img-input" onchange="loadFile(event)" />

@@ -57,3 +57,10 @@
     height: 100px;
     width: 100px;
 }
+
+/*Profile Change Cover Photo View Styling*/
+
+.cover-photo-upload {
+    width: auto;
+    height: 55vh;
+}
