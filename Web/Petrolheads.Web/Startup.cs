@@ -31,6 +31,7 @@
     using Petrolheads.Services.Data.Settings;
     using Petrolheads.Services.Mapping;
     using Petrolheads.Services.Messaging;
+    using Petrolheads.Web.Hubs;
     using Petrolheads.Web.ViewModels;
 
     public class Startup
@@ -63,7 +64,9 @@
             {
                 configure.Filters.Add(new AutoValidateAntiforgeryTokenAttribute());
             }).AddRazorRuntimeCompilation();
+
             services.AddRazorPages();
+            services.AddSignalR();
 
             services.AddAntiforgery(options =>
             {
@@ -149,6 +152,7 @@
             app.UseEndpoints(
                 endpoints =>
                     {
+                        endpoints.MapHub<ChatHub>("/hub/chat");
                         endpoints.MapControllerRoute("areaRoute", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
                         endpoints.MapRazorPages();

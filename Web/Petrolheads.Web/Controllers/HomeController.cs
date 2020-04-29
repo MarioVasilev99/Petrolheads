@@ -21,6 +21,7 @@
             this.postsService = postsService;
         }
 
+        [Authorize]
         public IActionResult Index(int page = 1)
         {
             var viewModel = new AllPostsViewModel();

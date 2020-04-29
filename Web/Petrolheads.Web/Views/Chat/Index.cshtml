@@ -1,0 +1,36 @@
+﻿@{
+    ViewData["Title"] = "Public Chat";
+}
+
+<!DOCTYPE html>
+
+<div class="container">
+    <h3 class="display-4 text-center">Public Chat</h3>
+    <hr />
+    <div class="messaging mt-4">
+        <div class="inbox_msg">
+            <div class="inbox_people">
+                <div class="headind_srch">
+                    <div class="recent_heading">
+                        <h4>Connected Users</h4>
+                    </div>
+                    <div class="srch_bar mt-2" id="get-users">
+                        <button class="btn btn-info">Get Connected Users</button>
+                    </div>
+                </div>
+                <div class="inbox_chat" id="user-info-div"></div>
+            </div>
+            <div class="mesgs">
+                <div class="msg_history">
+                    <div class="outgoing_msg" id="messagesList"></div>
+                </div>
+                <div class="type_msg">
+                    <div class="input_msg_write">
+                        <input type="text" class="write_msg" id="messageInput" placeholder="Type a message" />
+                        <button class="msg_send_btn" id="sendButton" type="button"><i class="fa fa-paper-plane-o" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
