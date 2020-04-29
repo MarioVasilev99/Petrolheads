@@ -1,0 +1,39 @@
+﻿@model Petrolheads.Web.ViewModels.Profiles.NewProfilePhotoInputModel
+@{
+    ViewData["Title"] = "Edit Cover Photo";
+}
+
+<div class="container">
+    <div class="row justify-content-center mb-3">
+        <h1 class="display-1">Change Cover Photo</h1>
+    </div>
+
+    <div class="row justify-content-center">
+        <p class="font-weight-bolder lead col-4 text-center">Current Cover Photo</p>
+    </div>
+
+    <form enctype="multipart/form-data" asp-controller="Profiles" asp-action="ProfileCoverPhotoEdit" method="Post">
+        <input class="d-none" asp-for="UserId" value="@Model.UserId" />
+
+        <div class="row align-content-end justify-content-center">
+            <img src="@Model.CurrentProfilePhotoUrl" class="car-image-upload col-3" id="current-main-image" />
+            <div class="col-2 align-self-end">
+                <label class="main-img-label btn btn-lg btn-primary m-0" asp-for="ProfilePhoto">Upload</label>
+                <input asp-for="ProfilePhoto" type="file" class="main-img-input" onchange="loadFile(event)" />
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <button type="submit" class="btn btn-lg btn-block btn-primary">Change Cover Photo</button>
+        </div>
+    </form>
+</div>
+
+<script>
+
+    var loadFile = function (event) {
+        var image = document.getElementById('current-main-image');
+        image.src = URL.createObjectURL(event.target.files[0]);
+    };
+
+</script>

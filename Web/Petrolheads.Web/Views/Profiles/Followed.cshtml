@@ -4,10 +4,18 @@
 }
 <div class="container">
     <div class="fb-profile">
-        <img align="left" class="fb-image-lg" src="https://res.cloudinary.com/dnzfktppn/image/upload/v1587670163/cover-image_z1hzzt.png" alt="Profile cover image" />
-        <img align="left" class="fb-image-profile thumbnail" src="https://res.cloudinary.com/dnzfktppn/image/upload/c_scale,w_300/v1587669032/profile-pic_qfrn8z.png" alt="Profile image" />
+        <img align="left" class="fb-image-lg" src="@Model.CoverPhotoUrl" alt="Profile cover image" />
+        <img align="left" class="fb-image-profile thumbnail" src="@Model.ProfilePhotoUrl" alt="Profile image" />
         <div class="fb-profile-text align-content-center row">
             <h1 class="col-7 col-sm-8">@Model.UserName</h1>
+            <div class="col-4 col-md-4">
+                <a asp-controller="Profiles" asp-action="ProfilePhotoEdit">
+                    <span class="btn btn-secondary w-100 mb-1">Change Profile Image</span>
+                </a>
+                <a asp-controller="Profiles" asp-action="ProfileCoverPhotoEdit">
+                    <span class="btn btn-secondary w-100">Change Cover Image</span>
+                </a>
+            </div>
         </div>
     </div>
 

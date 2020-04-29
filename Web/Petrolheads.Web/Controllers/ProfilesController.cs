@@ -102,5 +102,28 @@
 
             return this.RedirectToAction("Cars", "Profiles", new { userId = input.UserId });
         }
+
+        [Authorize]
+        public IActionResult ProfileCoverPhotoEdit()
+        {
+            var userId = this.userManager.GetUserId(this.User);
+            var currentProfileCoverPhotoUrl = this.profilesService.GetCoverPhotoUrl(userId);
+            var viewModel = new NewProfilePhotoInputModel()
+            {
+                UserId = userId,
+                CurrentProfilePhotoUrl = currentProfileCoverPhotoUrl,
+            };
+
+            return this.View(viewModel);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public async Task<IActionResult> ProfileCoverPhotoEdit(NewProfilePhotoInputModel input)
+        {
+            await this.profilesService.ChangeCoverPhoto(input);
+
+            return this.RedirectToAction("Cars", "Profiles", new { userId = input.UserId });
+        }
     }
 }

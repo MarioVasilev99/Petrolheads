@@ -15,5 +15,9 @@
         string GetProfilePhotoUrl(string userId);
 
         Task ChangeProfilePhoto(NewProfilePhotoInputModel input);
+
+        string GetCoverPhotoUrl(string userId);
+
+        Task ChangeCoverPhoto(NewProfilePhotoInputModel input);
     }
 }

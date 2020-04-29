@@ -2,6 +2,7 @@
 {
     using System.Linq;
     using System.Threading.Tasks;
+
     using CloudinaryDotNet;
     using Petrolheads.Common.CloudinaryHelper;
     using Petrolheads.Data.Common.Repositories;
@@ -68,6 +69,25 @@
             return this.users.All()
                 .Where(u => u.Id == userId)
                 .Select(u => u.ProfilePhotoUrl)
+                .FirstOrDefault();
+        }
+
+        public async Task ChangeCoverPhoto(NewProfilePhotoInputModel input)
+        {
+            if (input.ProfilePhoto != null)
+            {
+                var user = this.users.All().FirstOrDefault(u => u.Id == input.UserId);
+                var newCoverPhotoUrl = await CloudinaryExtension.UploadFileAsync(this.cloudinary, input.ProfilePhoto);
+                user.CoverPhotoUrl = newCoverPhotoUrl;
+                await this.users.SaveChangesAsync();
+            }
+        }
+
+        public string GetCoverPhotoUrl(string userId)
+        {
+            return this.users.All()
+                .Where(u => u.Id == userId)
+                .Select(u => u.CoverPhotoUrl)
                 .FirstOrDefault();
         }
     }

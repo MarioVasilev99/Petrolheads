@@ -4,7 +4,7 @@
 }
 <div class="container">
     <div class="fb-profile">
-        <img align="left" class="fb-image-lg" src="@Model.CoverPhotoUrl" alt="Profile cover image" />       
+        <img align="left" class="fb-image-lg" src="@Model.CoverPhotoUrl" alt="Profile cover image" />
         <img align="left" class="fb-image-profile thumbnail" src="@Model.ProfilePhotoUrl" alt="Profile image" />
         <div class="fb-profile-text align-content-center row">
             <h1 class="col-7 col-md-8 col-sm-8">@Model.UserName</h1>
@@ -19,7 +19,9 @@
                     <a asp-controller="Profiles" asp-action="ProfilePhotoEdit">
                         <span class="btn btn-secondary w-100 mb-1">Change Profile Image</span>
                     </a>
-                    <span class="btn btn-secondary w-100">Change Cover Image</span>
+                    <a asp-controller="Profiles" asp-action="ProfileCoverPhotoEdit">
+                        <span class="btn btn-secondary w-100">Change Cover Image</span>
+                    </a>
                 </div>
             }
 
@@ -44,27 +46,27 @@
         {
             <a class="btn btn-dark btn-lg btn-block" asp-controller="Cars" asp-action="Create">Add Car</a>
         }
-        
+
         @foreach (var car in Model.Cars)
         {
-                <div class="container border border-primary m-1">
-                    <div class="row align-items-end">
-                        <div class="col-md-5 col-lg-4 p-0">
-                            <img src="@car.MainImageUrl" alt="car-image" class="car-main-image">
-                        </div>
-                        <div class="col-md-4 col-lg-5 p-0">
-                            <h2 class="">@car.MakeName @car.Model</h2>
-                            <p class="">Added on @car.CreatedOn</p>
-                        </div>
-                        <div class="col-md-3 p-1">
-                            <a class="btn btn-block btn-primary" asp-controller="Cars" asp-action="Details" asp-route-carId="@car.Id">Details</a>
-                            @if (Model.IsProfileOwner)
-                            {
-                                <a class="btn btn-block btn-danger" asp-controller="Cars" asp-action="Delete" asp-route-carId="@car.Id">Remove Car</a>
-                            }
-                        </div>
+            <div class="container border border-primary m-1">
+                <div class="row align-items-end">
+                    <div class="col-md-5 col-lg-4 p-0">
+                        <img src="@car.MainImageUrl" alt="car-image" class="car-main-image">
+                    </div>
+                    <div class="col-md-4 col-lg-5 p-0">
+                        <h2 class="">@car.MakeName @car.Model</h2>
+                        <p class="">Added on @car.CreatedOn</p>
+                    </div>
+                    <div class="col-md-3 p-1">
+                        <a class="btn btn-block btn-primary" asp-controller="Cars" asp-action="Details" asp-route-carId="@car.Id">Details</a>
+                        @if (Model.IsProfileOwner)
+                        {
+                            <a class="btn btn-block btn-danger" asp-controller="Cars" asp-action="Delete" asp-route-carId="@car.Id">Remove Car</a>
+                        }
                     </div>
                 </div>
+            </div>
         }
     </div>
 </div>
