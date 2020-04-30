@@ -37,8 +37,6 @@
             {
                 await userManager.AddToRoleAsync(adminUser, GlobalConstants.AdministratorRoleName);
             }
-
-
         }
     }
 }

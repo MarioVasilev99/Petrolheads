@@ -60,6 +60,7 @@
             {
                 return this.View(input);
             }
+
             await this.postsService.EditPost(input.UserId, input);
 
             return this.RedirectToAction("Index", "ManagePosts", new { area = "Administration" });
