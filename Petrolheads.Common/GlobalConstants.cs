@@ -12,6 +12,10 @@
 
         public const int UsernameMaxLenght = 20;
 
+        // Login Page Constants
+        public const string LoginPageImageUrl = "https://res.cloudinary.com/dnzfktppn/image/upload/v1588709644/M1jve1588710102_ljb2qf.jpg";
+
+
         // Create Post Validation Constants
         public const int PostDescriptionMaxLenght = 100;
 

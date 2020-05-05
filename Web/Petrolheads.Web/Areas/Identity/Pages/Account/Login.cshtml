@@ -1,4 +1,5 @@
 ﻿@page
+@using Petrolheads.Common;
 @model LoginModel
 
 @{
@@ -8,14 +9,13 @@
 <div class="container-fluid">
         <div class="row no-gutter">
             <div class="col-12">
-                <div class="login align-items-center py-5">
+                <div class="login align-items-center py-2">
                     <div class="container">
                         <div class="row">
-                            <div class="col-md-6 img-col">
-                                <img src="https://images.unsplash.com/photo-1525609004556-c46c7d6cf023?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1937&q=80" />
+                            <div class="col-md-6 img-col text-center my-auto">
+                                <img class="align-self-end" src="@GlobalConstants.LoginPageImageUrl"/>
                             </div>
-                            <div class="col-md-6 mx-auto">
-                                <h3 class="login-heading mb-4">Welcome back!</h3>
+                            <div class="col-md-6 mt-3 mx-auto">
                                 <form id="account" method="post">
                                     <h4>Use a local account to log in.</h4>
                                     <hr />
@@ -53,11 +53,11 @@
                                         <hr />
                                         <a class="btn-primary btn btn-lg" asp-page="./Register" asp-route-returnUrl="@Model.ReturnUrl">Register</a>
                                     </div>
-                                    <div class="row justify-content-center">
-                                        <div class="col-5 p-0">
+                                    <div class="row justify-content-center mt-3">
+                                        <div class="col-6 p-0">
                                             <h4>Or login with</h4>
                                         </div>
-                                        <div class="col-6 p-0">
+                                        <div class="col-2 p-0">
                                             @{
                                                 if ((Model.ExternalLogins?.Count ?? 0) == 0)
                                                 {

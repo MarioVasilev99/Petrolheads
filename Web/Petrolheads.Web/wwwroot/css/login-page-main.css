@@ -1,5 +1,6 @@
 .img-col img {
     border-radius: 1em;
+    max-height: 75vh;
 }
 
 .fb-icon {
@@ -11,3 +12,5 @@
     border: none;
     color: #3b5998;
 }
+
+/*@media (max-width:)*/
