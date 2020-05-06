@@ -7,7 +7,7 @@
         <img align="left" class="fb-image-lg" src="@Model.CoverPhotoUrl" alt="Profile cover image" />
         <img align="left" class="fb-image-profile thumbnail" src="@Model.ProfilePhotoUrl" alt="Profile image" />
         <div class="fb-profile-text align-content-center row">
-            <h1 class="col-7 col-md-8 col-sm-8 align-self-end p-0">@Model.UserName</h1>
+            <h1 class="col-7 col-md-8 col-sm-6 align-self-end p-0">@Model.UserName</h1>
             @if (!this.Model.IsProfileOwner)
             {
                 <form id="followsForm" method="post"></form>
@@ -15,7 +15,7 @@
             }
             else
             {
-                <div class="col-4 col-md-4">
+                <div class="col-4 col-sm-6 col-md-4">
                     <a asp-controller="Profiles" asp-action="ProfilePhotoEdit">
                         <span class="btn btn-secondary w-100 mb-1">Change Profile Photo</span>
                     </a>
